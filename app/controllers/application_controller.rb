@@ -1,9 +1,15 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
-  # Add your routes here
-  get "/" do
-    { message: "Good luck with your project!" }.to_json
+  # Teams route
+  get '/teams' do
+    teams = Team.all
+    teams.to_json
   end
 
+  # Team id route
+  get '/teams/:id' do
+    team = Team.find(params[:id])
+    team.to_json
+  end
 end
