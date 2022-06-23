@@ -2,6 +2,16 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
   ##################################
+  ### All Data
+  ##################################
+  get '/' do
+    data = Task.all
+    data.to_json(
+      include: :user
+    )
+  end
+  
+  ##################################
   ### Users
   ### No modification to this table
   ################################## 
