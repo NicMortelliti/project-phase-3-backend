@@ -1,21 +1,5 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
- 
-  ##################################
-  ### Teams
-  ### No modification to this table
-  ##################################
-  # Teams route
-  get '/teams' do
-    teams = Team.all
-    teams.to_json
-  end
-
-  # Team id route
-  get '/teams/:id' do
-    team = Team.find(params[:id])
-    team.to_json
-  end
 
   ##################################
   ### Users
@@ -54,11 +38,11 @@ class ApplicationController < Sinatra::Base
   ### Following changes made to this table:
   ###   - Add new task (CREATE)
   ###   - Get list of tasks (READ)
-  ###   - Update description (UPDATE)
-  ###   - Update due date (UPDATE)
-  ###   - Update user assigned (UPDATE)
-  ###   - Update project assigned (UPDATE)
-  ###   - Update story points (UPDATE)
+  ###  TODO - Update description (UPDATE)
+  ###  TODO - Update due date (UPDATE)
+  ###  TODO - Update user assigned (UPDATE)
+  ###  TODO - Update project assigned (UPDATE)
+  ###  TODO - Update story points (UPDATE)
   ###   - Delete task (DELETE)
   ##################################
   # Tasks route
@@ -70,6 +54,29 @@ class ApplicationController < Sinatra::Base
   # Task id route
   get '/tasks/:id' do
     task = Task.find(params[:id])
+    task.to_json(
+      include: { user: { only: [:first_name, :last_name]}}
+    )
+
+  end
+
+  # Add task
+  post '/tasks' do
+    task = Task.create(
+      description: params[:description], # Client will require this field
+      due_date: params[:due_date], # Client can send 0 indicating no due date assigned
+      story_points: params[:story_points], # Client can send 0
+      project_id: params[:project_id], # Client will require this field
+      user_id: params[:user_id] # Client can send a 0 indicating unassigned
+    )
     task.to_json
   end
+
+  # Task delete
+  delete '/tasks/:id' do
+    task = Task.find(params[:id])
+    task.destroy
+    task.to_json
+  end
+
 end
