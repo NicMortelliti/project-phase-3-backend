@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2022_06_22_220717) do
     t.string "description"
     t.datetime "due_date"
     t.integer "story_points"
+    t.integer "state"
     t.integer "project_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false

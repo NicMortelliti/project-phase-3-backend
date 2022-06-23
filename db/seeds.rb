@@ -15,6 +15,7 @@ end
     description: "#{Faker::Hacker.verb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun}",
     due_date: Faker::Date.between(from: 20.days.ago, to: 200.days.from_now),
     story_points: rand(1..20), # random number between 1 and 20
+    state: rand(1..4), # random number between 1 and 4
     project_id: rand(1..2), # random number between 1 and 2
     user_id: rand(0..20) # random number between 0 and 20. 0 means not assigned to a user.
   )
