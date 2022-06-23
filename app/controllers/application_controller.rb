@@ -38,11 +38,7 @@ class ApplicationController < Sinatra::Base
   ### Following changes made to this table:
   ###   - Add new task (CREATE)
   ###   - Get list of tasks (READ)
-  ###  TODO - Update description (UPDATE)
-  ###  TODO - Update due date (UPDATE)
-  ###  TODO - Update user assigned (UPDATE)
-  ###  TODO - Update project assigned (UPDATE)
-  ###  TODO - Update story points (UPDATE)
+  ###   - Update task (UPDATE)
   ###   - Delete task (DELETE)
   ##################################
   # Tasks route
@@ -57,7 +53,6 @@ class ApplicationController < Sinatra::Base
     task.to_json(
       include: { user: { only: [:first_name, :last_name]}}
     )
-
   end
 
   # Add task
@@ -70,6 +65,24 @@ class ApplicationController < Sinatra::Base
       user_id: params[:user_id] # Client can send a 0 indicating unassigned
     )
     task.to_json
+  end
+
+  # Task update
+  patch '/tasks/:id' do
+    task = Task.find(params[:id])
+    task.update(
+      description: params[:description],
+      due_date: params[:due_date],
+      story_points: params[:story_points],
+      project_id: params[:project_id],
+      user_id: params[:user_id]
+    )
+    task.to_json(
+      include:{ 
+        user: { only: [:first_name, :last_name]},
+        project: { only: [:name]}
+      }
+    )
   end
 
   # Task delete
