@@ -5,7 +5,6 @@ puts "🌱 Seeding spices..."
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    team_id: rand(1..3) # random team number between 1 and 3
   )
 end
 
@@ -26,14 +25,6 @@ end
   # create a project with random data
   Project.create(
     name: Faker::Space.launch_vehicle
-  )
-end
-
-# Make 3 teams
-3.times do
-  # create a team with random data
-  Team.create(
-    name: Faker::Color.color_name
   )
 end
 
