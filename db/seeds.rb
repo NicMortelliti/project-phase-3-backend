@@ -2,9 +2,13 @@ puts "🌱 Seeding spices..."
 
 # Make 20 users
 20.times do
+  first = Faker::Name.first_name
+  last = Faker::Name.last_name
+  username = "#{first[0]}#{last}".to_s.downcase
   User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
+    first_name: "#{first}",
+    last_name: "#{last}",
+    username: "#{username}",
   )
 end
 
