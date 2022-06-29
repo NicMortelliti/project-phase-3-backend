@@ -71,6 +71,7 @@ class ApplicationController < Sinatra::Base
       description: params[:description], # Client will require this field
       due_date: params[:due_date], # Client can send 0 indicating no due date assigned
       story_points: params[:story_points], # Client can send 0
+      state: params[:state],
       project_id: params[:project_id], # Client will require this field
       user_id: params[:user_id] # Client can send a 0 indicating unassigned
     )
