@@ -5,9 +5,9 @@ class ApplicationController < Sinatra::Base
   ### All Data
   ##################################
   get '/' do
-    data = Task.all
-    data.to_json(
-      include: :user
+    task = Task.all
+    task.to_json(
+      include: [:project, :user]
     )
   end
   
