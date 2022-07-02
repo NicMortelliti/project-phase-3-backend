@@ -24,7 +24,7 @@ end
 count = 1
 Project.all.length.times do
   # Make 50 tasks
-  50.times do
+  10.times do
     # create a task with random data
     Task.create(
       description: "#{Faker::Hacker.verb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun}",
