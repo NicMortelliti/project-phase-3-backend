@@ -90,10 +90,7 @@ class ApplicationController < Sinatra::Base
       user_id: params[:user_id]
     )
     task.to_json(
-      include:{ 
-        user: { only: [:first_name, :last_name]},
-        project: { only: [:name]}
-      }
+      include: [:project, :user]
     )
   end
 
