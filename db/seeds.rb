@@ -12,25 +12,30 @@ puts "🌱 Seeding spices..."
   )
 end
 
-# Make 50 tasks
-50.times do
-  # create a task with random data
-  Task.create(
-    description: "#{Faker::Hacker.verb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun}",
-    due_date: Faker::Date.between(from: 20.days.ago, to: 200.days.from_now),
-    story_points: rand(1..20), # random number between 1 and 20
-    state: rand(1..4), # random number between 1 and 4
-    project_id: rand(1..2), # random number between 1 and 2
-    user_id: rand(0..20) # random number between 0 and 20. 0 means not assigned to a user.
+# Seed projects
+4.times do
+  # create a project with random data
+  Project.create(
+    name: Faker::Space.unique.launch_vehicle
   )
 end
 
-# Make 2 projects
-2.times do
-  # create a project with random data
-  Project.create(
-    name: Faker::Space.launch_vehicle
-  )
+# For each project...
+count = 1
+Project.all.length.times do
+  # Make 50 tasks
+  50.times do
+    # create a task with random data
+    Task.create(
+      description: "#{Faker::Hacker.verb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun}",
+      due_date: Faker::Date.between(from: 20.days.ago, to: 200.days.from_now),
+      story_points: rand(1..20), # random number between 1 and 20
+      state: rand(1..4), # random number between 1 and 4
+      project_id: count, # random number between 1 and 2
+      user_id: rand(0..20) # random number between 0 and 20. 0 means not assigned to a user.
+    )
+  end
+  count += 1
 end
 
 puts "✅ Done seeding!"
