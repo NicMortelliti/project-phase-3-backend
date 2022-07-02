@@ -85,6 +85,7 @@ class ApplicationController < Sinatra::Base
       description: params[:description],
       due_date: params[:due_date],
       story_points: params[:story_points],
+      state: params[:state],
       project_id: params[:project_id],
       user_id: params[:user_id]
     )
