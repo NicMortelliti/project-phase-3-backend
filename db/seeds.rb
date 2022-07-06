@@ -23,7 +23,7 @@ end
 # For each project...
 count = 1
 Project.all.length.times do
-  # Make 50 tasks
+  # Make 10 tasks
   10.times do
     # create a task with random data
     Task.create(
