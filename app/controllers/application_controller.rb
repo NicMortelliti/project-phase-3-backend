@@ -2,7 +2,7 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
   ##################################
-  ### All Data
+  ### All Data                      
   ##################################
   get '/' do
     task = Task.all
@@ -12,8 +12,8 @@ class ApplicationController < Sinatra::Base
   end
   
   ##################################
-  ### Users
-  ### No modification to this table
+  ### Users                         
+  ### No modification to this table 
   ################################## 
   # Users route
   get '/users' do
@@ -28,8 +28,8 @@ class ApplicationController < Sinatra::Base
   end
 
   ##################################
-  ### Projects
-  ### No modification to this table
+  ### Projects                      
+  ### No modification to this table 
   ##################################
   # Projects route
   get '/projects' do
@@ -44,12 +44,12 @@ class ApplicationController < Sinatra::Base
   end
 
   ##################################
-  ### Tasks
+  ### Tasks                         
   ### Following changes made to this table:
-  ###   - Add new task (CREATE)
-  ###   - Get list of tasks (READ)
-  ###   - Update task (UPDATE)
-  ###   - Delete task (DELETE)
+  ###   - Add new task (CREATE)     
+  ###   - Get list of tasks (READ)  
+  ###   - Update task (UPDATE)      
+  ###   - Delete task (DELETE)      
   ##################################
   # Tasks route
   get '/tasks' do
@@ -75,7 +75,9 @@ class ApplicationController < Sinatra::Base
       project_id: params[:project_id], # Client will require this field
       user_id: params[:user_id] # Client can send a 0 indicating unassigned
     )
-    task.to_json
+    task.to_json(
+      include: [:project, :user]
+    )
   end
 
   # Task update
