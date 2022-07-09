@@ -1,9 +1,7 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
-  ##################################
   ### All Data                      
-  ##################################
   get '/' do
     task = Task.all
     task.to_json(
@@ -11,10 +9,7 @@ class ApplicationController < Sinatra::Base
     )
   end
   
-  ##################################
   ### Users                         
-  ### No modification to this table 
-  ################################## 
   # Users route
   get '/users' do
     users = User.all
@@ -27,10 +22,7 @@ class ApplicationController < Sinatra::Base
     user.to_json
   end
 
-  ##################################
   ### Projects                      
-  ### No modification to this table 
-  ##################################
   # Projects route
   get '/projects' do
     projects = Project.all
@@ -43,14 +35,7 @@ class ApplicationController < Sinatra::Base
     project.to_json
   end
 
-  ##################################
   ### Tasks                         
-  ### Following changes made to this table:
-  ###   - Add new task (CREATE)     
-  ###   - Get list of tasks (READ)  
-  ###   - Update task (UPDATE)      
-  ###   - Delete task (DELETE)      
-  ##################################
   # Tasks route
   get '/tasks' do
     tasks = Task.all
