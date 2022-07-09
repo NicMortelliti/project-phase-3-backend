@@ -3,7 +3,7 @@ class CreateNoneUser < ActiveRecord::Migration[6.1]
     User.create(
       first_name: "none",
       last_name: "none",
-      username: "none",
+      username: "--Unassigned--",
   )
   end
 end
