@@ -16,12 +16,6 @@ class ApplicationController < Sinatra::Base
     users.to_json
   end
 
-  # User id route
-  get '/users/:id' do
-    user = User.find(params[:id])
-    user.to_json
-  end
-
   ### Projects                      
   # Projects route
   get '/projects' do
@@ -29,27 +23,7 @@ class ApplicationController < Sinatra::Base
     projects.to_json
   end
 
-  # Project id route
-  get '/projects/:id' do
-    project = Project.find(params[:id])
-    project.to_json
-  end
-
-  ### Tasks                         
-  # Tasks route
-  get '/tasks' do
-    tasks = Task.all
-    tasks.to_json
-  end
-
-  # Task id route
-  get '/tasks/:id' do
-    task = Task.find(params[:id])
-    task.to_json(
-      include: { user: { only: [:first_name, :last_name]}}
-    )
-  end
-
+  ### Tasks
   # Add task
   post '/tasks' do
     task = Task.create(
