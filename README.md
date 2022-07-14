@@ -1,10 +1,6 @@
-# Scrumban Server
+# **Scrumban Server**
 
-- 📖 [Description](#description)
-- 🖥️ [Install](#install)
-- 👟 [Run](#run)
-
-## 📖 Description
+## 📖 ***Description***
 
 This is a Ruby server for use with the associated [React client](https://github.com/NicMortelliti/scrumban-client).
 
@@ -19,23 +15,24 @@ The server accepts the following HTTP requests:
 | /tasks/:id | PATCH | Update task matching id. Then, receive updated task, user and project details. |
 | /tasks/:id | DELETE | Delete task matching id. |
 
-### Entity-Relationship
-The Entity-Relationship Diagram below displays the 
+### *Entity-Relationship*
+
+The Entity-Relationship Diagram below displays the relationships between the three tables contained within the database. The tasks table is the join table, joining programs and users. The tasks table contains two foreign ID's. One points to the ID of the associated project (***project_id***) and the other points to ID of the associated (assigned) user (***user_id***). The diagram also shows that a task can only have *one* program and *one* user. However, both programs and users may have *many* tasks.
 
 ![ERD](assets/erd.png)
 
---- 
+---
 
-## 🖥️ Install
+## 🖥️ ***Install***
 
-### Clone the repository
+### *Clone the repository*
 
 ```shell
 git clone git@github.com:NicMortelliti/scrumban-server.git server
 cd server
 ```
 
-### Check your Ruby version
+### *Check your Ruby version*
 
 ```shell
 ruby -v
@@ -49,7 +46,7 @@ If not, install the right ruby version using [rvm](https://rvm.io/). If using a 
 rvm install 2.6
 ```
 
-### Install dependencies
+### *Install dependencies*
 
 Using [Bundler](https://bundler.io/):
 
@@ -57,20 +54,26 @@ Using [Bundler](https://bundler.io/):
 bundle install
 ```
 
-### Initialize the database
+### *Initialize the database*
 
 ```shell
 rake db:migrate db:seed
 ```
 
-## 👟 Run
+---
 
-### Start the server
+## 👟 ***Run***
+
+### *Start the server*
 
 ```shell
 rake server
 ```
 
-## License
+The server should now be running on ```localhost:9292```.
+
+---
+
+## ***License***
 
 [MIT](https://choosealicense.com/licenses/mit/)
