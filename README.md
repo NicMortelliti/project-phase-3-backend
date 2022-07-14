@@ -27,14 +27,14 @@ The Entity-Relationship Diagram below displays the relationships between the thr
 
 ### *Clone the repository*
 
-```shell
+```bash
 git clone git@github.com:NicMortelliti/scrumban-server.git server
 cd server
 ```
 
 ### *Check your Ruby version*
 
-```shell
+```properties
 ruby -v
 ```
 
@@ -42,7 +42,7 @@ The output should start with something like `ruby 2.7`.
 
 If not, install the right ruby version using [rvm](https://rvm.io/). If using a linux-based system, I highly recommend following the [installation guide](https://wiki.archlinux.org/title/RVM) from the arch wiki instead:
 
-```shell
+```properties
 rvm install 2.6
 ```
 
@@ -50,13 +50,13 @@ rvm install 2.6
 
 Using [Bundler](https://bundler.io/):
 
-```shell
+```properties
 bundle install
 ```
 
 ### *Initialize the database*
 
-```shell
+```properties
 rake db:migrate db:seed
 ```
 
@@ -66,7 +66,7 @@ rake db:migrate db:seed
 
 ### *Start the server*
 
-```shell
+```properties
 rake server
 ```
 
