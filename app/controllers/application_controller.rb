@@ -23,16 +23,24 @@ class ApplicationController < Sinatra::Base
     projects.to_json
   end
 
+  # Add project
+  post '/projects' do
+    project = Project.create(
+      name: params[:name]
+    )
+    project.to_json( )
+  end
+
   ### Tasks
   # Add task
   post '/tasks' do
     task = Task.create(
-      description: params[:description], # Client will require this field
-      due_date: params[:due_date], # Client can send 0 indicating no due date assigned
-      story_points: params[:story_points], # Client can send 0
+      description: params[:description], 
+      due_date: params[:due_date],
+      story_points: params[:story_points],
       state: params[:state],
-      project_id: params[:project_id], # Client will require this field
-      user_id: params[:user_id] # Client can send a 0 indicating unassigned
+      project_id: params[:project_id],
+      user_id: params[:user_id]
     )
     task.to_json(
       include: [:project, :user]
