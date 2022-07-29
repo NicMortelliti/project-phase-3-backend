@@ -1,6 +1,9 @@
 # **Scrumban Server**
 
-## 📖 ***Description***
+![Heroku](https://pyheroku-badge.herokuapp.com/?app=nm-scrum&style=flat-square)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+## 📖 **_Description_**
 
 This is a Ruby server for use with the associated [React client](https://github.com/NicMortelliti/scrumban-client).
 
@@ -15,24 +18,24 @@ The server accepts the following HTTP requests:
 | /tasks/:id | PATCH | Update task matching id. Then, receive updated task, user and project details. |
 | /tasks/:id | DELETE | Delete task matching id. |
 
-### *Entity-Relationship*
+### _Entity-Relationship_
 
-The Entity-Relationship Diagram below displays the relationships between the three tables contained within the database. The tasks table is the join table, joining programs and users. The tasks table contains two foreign ID's. One points to the ID of the associated project (***project_id***) and the other points to ID of the associated (assigned) user (***user_id***). The diagram also shows that a task can only have *one* program and *one* user. However, both programs and users may have *many* tasks.
+The Entity-Relationship Diagram below displays the relationships between the three tables contained within the database. The tasks table is the join table, joining programs and users. The tasks table contains two foreign ID's. One points to the ID of the associated project (**_project_id_**) and the other points to ID of the associated (assigned) user (**_user_id_**). The diagram also shows that a task can only have _one_ program and _one_ user. However, both programs and users may have _many_ tasks.
 
 ![ERD](assets/erd.png)
 
 ---
 
-## 🖥️ ***Install***
+## 🖥️ **_Install_**
 
-### *Clone the repository*
+### _Clone the repository_
 
 ```bash
 git clone git@github.com:NicMortelliti/scrumban-server.git server
 cd server
 ```
 
-### *Check your Ruby version*
+### _Check your Ruby version_
 
 ```properties
 ruby -v
@@ -46,7 +49,7 @@ If not, install the right ruby version using [rvm](https://rvm.io/). If using a 
 rvm install 2.6
 ```
 
-### *Install dependencies*
+### _Install dependencies_
 
 Using [Bundler](https://bundler.io/):
 
@@ -54,7 +57,7 @@ Using [Bundler](https://bundler.io/):
 bundle install
 ```
 
-### *Initialize the database*
+### _Initialize the database_
 
 ```properties
 rake db:migrate db:seed
@@ -62,18 +65,18 @@ rake db:migrate db:seed
 
 ---
 
-## 👟 ***Run***
+## 👟 **_Run_**
 
-### *Start the server*
+### _Start the server_
 
 ```properties
 rake server
 ```
 
-The server should now be running on ```localhost:9292```.
+The server should now be running on `localhost:9292`.
 
 ---
 
-## ***License***
+## **_License_**
 
 [MIT](https://choosealicense.com/licenses/mit/)
